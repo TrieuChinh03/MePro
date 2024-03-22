@@ -1,13 +1,11 @@
-package com.example.mepro.database;
+package com.example.mepro.layout_note.database;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
-
 import com.example.mepro.layout_note.model.Note;
-
 import java.util.ArrayList;
 
 public class NoteDB extends SQLiteOpenHelper {

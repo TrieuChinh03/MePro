@@ -10,13 +10,11 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import com.example.mepro.R;
-import com.example.mepro.database.NoteDB;
+import com.example.mepro.layout_note.database.NoteDB;
 import com.example.mepro.layout_note.adapter.AdapterNote;
 import com.example.mepro.layout_note.model.Note;
-import com.example.mepro.ultil.Convert;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class LayoutNote extends AppCompatActivity {
@@ -57,7 +55,7 @@ public class LayoutNote extends AppCompatActivity {
         String search = edtSearch.getText().toString();
         if(listNote == null) {
             listNote = new ArrayList<>();
-            Note note = new Note("Không có tiêu đề", "", "");
+            Note note = new Note("","","");
             listNote.add(note);
         }
         searchNote = new ArrayList<>();
