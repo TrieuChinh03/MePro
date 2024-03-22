@@ -1,13 +1,11 @@
-package com.example.mepro.database;
+package com.example.mepro.layout_note.database;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
-
 import com.example.mepro.layout_note.model.Note;
-
 import java.util.ArrayList;
 
 public class NoteDB extends SQLiteOpenHelper {
@@ -70,7 +68,7 @@ public class NoteDB extends SQLiteOpenHelper {
         Cursor c = sql.rawQuery("SELECT * FROM tblNote" ,null);
         Note note;
         ArrayList<Note> listNote = new ArrayList<>();
-        if(c.moveToFirst()) {
+        if(c.moveToLast()) {
             do {
                 int id = c.getInt(0);
                 String tilte = c.getString(1);
@@ -79,7 +77,7 @@ public class NoteDB extends SQLiteOpenHelper {
                 
                 note = new Note(id,tilte, content, timeStr);
                 listNote.add(note);
-            } while (c.moveToNext() && !c.isAfterLast());
+            } while (c.moveToPrevious() && !c.isBeforeFirst());
             sql.close();
             return listNote;
         }

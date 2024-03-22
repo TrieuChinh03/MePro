@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:layout_margin="10dp"
     android:background="@drawable/background_layout_note_item">
 
     <ImageView
@@ -16,19 +17,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:padding="10dp"
+        android:padding="5dp"
         android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/tvTilte"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.15"
-            android:text="Tiêu đề"
-            android:textStyle="bold"
-            android:textColor="#004D40"
-            android:textSize="20dp"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTilte"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Tiêu đề"
+                android:textStyle="bold"
+                android:textColor="#004D40"
+                android:textSize="20dp"/>
+
+            <ImageView
+                android:id="@+id/imgDelete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/ic_thungrac"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,10 +53,10 @@
 
             <TextView
                 android:id="@+id/tvContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="25dp"
                 android:layout_weight="1"
-                android:text="Nội dung"
+                android:hint="Nội dung"
                 android:textSize="18dp"
                 android:textColor="@color/black" />
 
@@ -51,6 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="right"
+                android:gravity="end"
+                android:paddingRight="5dp"
                 android:text="19/03/2024"
                 android:textColor="#26C6DA"
                 android:textSize="17dp" />

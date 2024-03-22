@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- button_selector.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_selected="true"
+        android:drawable="@drawable/item_work_button_category_true" />
+    <item
+        android:drawable="@drawable/item_work_button_category_false" />
+</selector>
+

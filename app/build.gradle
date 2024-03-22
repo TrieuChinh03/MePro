@@ -45,4 +45,7 @@ dependencies {
     //===   Thư viện image slider   ===
     implementation 'me.relex:circleindicator:2.1.6'
 
+    //===   Thư viện trượt biểu đồ    ===
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
 }
