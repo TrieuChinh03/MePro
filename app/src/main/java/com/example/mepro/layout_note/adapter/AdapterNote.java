@@ -15,7 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.mepro.R;
 import com.example.mepro.layout_note.database.NoteDB;
 import com.example.mepro.layout_note.model.Note;
-import com.example.mepro.ultil.Convert;
+import com.example.mepro.util.Convert;
 
 import java.util.ArrayList;
 
@@ -54,7 +54,7 @@ public class AdapterNote extends ArrayAdapter<Note> {
             tvContent.setHint("Chưa có nội dung");
         else
             tvContent.setText(note.getContent());
-        tvTime.setText(Convert.getDate(note.getTime()));
+        tvTime.setText(Convert.getDateStr(note.getTime()));
         imgDelete.setOnClickListener(view ->{
             if(note!=null && note.getId()!=null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);

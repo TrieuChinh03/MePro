@@ -1,17 +1,18 @@
-package com.example.mepro.layout_listword.model;
+package com.example.mepro.layout_listwork.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Work {
+public class Work implements Serializable {
     private int id;
     private String titleWork;
     private List<String> extraWork;
     private String noteWork;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String startTime;
+    private String endTime;
     private boolean important;
-    private boolean complete;
+    private boolean completed;
     private int category;
 
     public Work() {}
@@ -19,7 +20,7 @@ public class Work {
     public Work(String titleWork, int category, boolean complete) {
         this.titleWork = titleWork;
         this.category = category;
-        this.complete = complete;
+        this.completed = complete;
     }
 
     public int getId() {
@@ -54,19 +55,19 @@ public class Work {
         this.noteWork = noteWork;
     }
 
-    public LocalDateTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
@@ -78,12 +79,12 @@ public class Work {
         this.important = important;
     }
 
-    public boolean isComplete() {
-        return complete;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    public void setComplete(boolean complete) {
-        this.complete = complete;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public int getCategory() {

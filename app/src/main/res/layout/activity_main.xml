@@ -43,20 +43,20 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.227" />
 
+
                     <TextView
                         android:id="@+id/tvHello"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_marginTop="28dp"
-                        android:gravity="center|start"
+                        android:layout_marginTop="40dp"
+                        android:gravity="center|end"
                         android:text="Xin chào buổi sáng"
                         android:textColor="#F4FF81"
                         android:textSize="18dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.525"
+                        app:layout_constraintHorizontal_bias="0.548"
                         app:layout_constraintStart_toEndOf="@+id/imageView3"
                         app:layout_constraintTop_toTopOf="parent" />
-
 
                     <TextView
                         android:id="@+id/tvName"

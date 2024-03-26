@@ -68,7 +68,7 @@ public class NoteDB extends SQLiteOpenHelper {
         Cursor c = sql.rawQuery("SELECT * FROM tblNote" ,null);
         Note note;
         ArrayList<Note> listNote = new ArrayList<>();
-        if(c.moveToFirst()) {
+        if(c.moveToLast()) {
             do {
                 int id = c.getInt(0);
                 String tilte = c.getString(1);
@@ -77,7 +77,7 @@ public class NoteDB extends SQLiteOpenHelper {
                 
                 note = new Note(id,tilte, content, timeStr);
                 listNote.add(note);
-            } while (c.moveToNext() && !c.isAfterLast());
+            } while (c.moveToPrevious() && !c.isBeforeFirst());
             sql.close();
             return listNote;
         }

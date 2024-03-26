@@ -3,14 +3,13 @@ package com.example.mepro;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.mepro.layout_note.view.LayoutNote;
+import com.example.mepro.layout_listwork.view.Activity_ListWork;
+import com.example.mepro.layout_note.view.Activity_ListNote;
 import com.example.mepro.photo.AdapterPhoto;
 import com.example.mepro.photo.Photo;
 import java.time.LocalDateTime;
@@ -21,7 +20,7 @@ import me.relex.circleindicator.CircleIndicator3;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvHello;
-    private ImageView imgHello, imgNote, imgSetting;
+    private ImageView imgHello, imgNote, imgSetting, imgWorkList;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +37,23 @@ public class MainActivity extends AppCompatActivity {
         imgHello = findViewById(R.id.imgHello);
         imgNote = findViewById(R.id.imgNote);
         imgSetting = findViewById(R.id.imgSetting);
+        imgWorkList = findViewById(R.id.imgWorkList);
+    
     }
     
     private void event() {
         //===   Sự kiện mở activity note    ===
         imgNote.setOnClickListener(view ->{
-            Intent intent = new Intent(this, LayoutNote.class);
+            Intent intent = new Intent(this, Activity_ListNote.class);
             startActivity(intent);
         });
         
         //===   Sự kiện mở test ===
+        imgWorkList.setOnClickListener(view ->{
+            Intent intent = new Intent(this, Activity_ListWork.class);
+            startActivity(intent);
+        });
+    
         imgSetting.setOnClickListener(view ->{
             Intent intent = new Intent(this, TestView.class);
             startActivity(intent);

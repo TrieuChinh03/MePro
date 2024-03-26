@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MePro</string>
+
+    <item name="menu_action_setting_category" type="menu"/>
 </resources>

@@ -1,35 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_listwork"
     android:orientation="vertical">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/buttonCategoryFalse"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:padding="5dp"/>
+                android:layout_height="match_parent"
+                android:padding="3dp"
+                android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/spnTimeFilter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentListWork"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rccvListCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:padding="5dp" />
 
-        </LinearLayout>
-    </ScrollView>
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/tbListWork"
+                        android:layout_width="35dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+                </LinearLayout>
+
+
+                <Spinner
+                    android:id="@+id/spnTimeFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vp2FragmentListWork"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_add" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -17,11 +19,11 @@ import android.widget.TextView;
 import com.example.mepro.R;
 import com.example.mepro.layout_note.database.NoteDB;
 import com.example.mepro.layout_note.model.Note;
-import com.example.mepro.ultil.Convert;
+import com.example.mepro.util.Convert;
 
 import java.time.LocalDateTime;
 
-public class LayoutNoteBook extends AppCompatActivity {
+public class Activity_Note extends AppCompatActivity {
     private EditText btBack;
     private TextView tvTime;
     private ScrollView scvContent;
@@ -30,11 +32,12 @@ public class LayoutNoteBook extends AppCompatActivity {
     private Note note;
     private NoteDB db;
     private boolean click = true;
+    private boolean contentChanged = false;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_note_book);
+        setContentView(R.layout.layout_note);
         db = new NoteDB(this);
         mappingId();
         getNote();
@@ -101,6 +104,24 @@ public class LayoutNoteBook extends AppCompatActivity {
                 return false;
             }
         });
+        
+        //===   Sự kiện khi nội dung được thay đổi  ===
+        edtContent.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        
+            }
+    
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                contentChanged = true;
+            }
+    
+            @Override
+            public void afterTextChanged(Editable editable) {
+        
+            }
+        });
 
         //===   Sự kiện delete  ===
         imgDelete.setOnClickListener(view ->{
@@ -150,16 +171,18 @@ public class LayoutNoteBook extends AppCompatActivity {
                 edtContent.setHint("Nhập ghi chú");
             else
                 edtContent.setText(note.getContent());
-            tvTime.setText(note.getTime());
+            tvTime.setText("Cập nhật cuối: " +note.getTime());
         } else {
             btBack.setHint("Không có tiêu đề");
             edtContent.setHint("Nhập ghi chú");
-            tvTime.setText(currentTime());
+            tvTime.setText("Cập nhật cuối: " +currentTime());
         }
     }
     
     //===   Lưu data    ===
     private void saveData() {
+        if(!contentChanged)
+            return;
         if(note != null && note.getId() != null) {
             tvTime.setText(currentTime());
             note.setTilte(btBack.getText().toString());
@@ -177,7 +200,7 @@ public class LayoutNoteBook extends AppCompatActivity {
     //===   Lấy thời gian hiện tại  ===
     private String currentTime() {
         LocalDateTime ldTime = LocalDateTime.now();
-        return Convert.convertTimeFormat(ldTime.toString());
+        return Convert.convertTime(ldTime.toString());
     }
 
     private void showKeyBoard(EditText editText) {
