@@ -5,11 +5,13 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mepro.layout_listwork.view.Activity_ListWork;
 import com.example.mepro.layout_note.view.Activity_ListNote;
+import com.example.mepro.layout_saving.view.Activity_Saving;
 import com.example.mepro.photo.AdapterPhoto;
 import com.example.mepro.photo.Photo;
 import java.time.LocalDateTime;
@@ -20,7 +22,7 @@ import me.relex.circleindicator.CircleIndicator3;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvHello;
-    private ImageView imgHello, imgNote, imgSetting, imgWorkList;
+    private ImageView imgHello, imgNote, imgSetting, imgWorkList, imgSaving;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         imgNote = findViewById(R.id.imgNote);
         imgSetting = findViewById(R.id.imgSetting);
         imgWorkList = findViewById(R.id.imgWorkList);
-    
+        imgSaving = findViewById(R.id.imgSaving);
     }
     
     private void event() {
@@ -48,9 +50,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         
-        //===   Sự kiện mở test ===
+        //===   Sự kiện mở công việc ===
         imgWorkList.setOnClickListener(view ->{
             Intent intent = new Intent(this, Activity_ListWork.class);
+            startActivity(intent);
+        });
+
+        //===   Sự kiện mở sổ tiết kiệm     ===
+        imgSaving.setOnClickListener(view -> {
+            Intent intent = new Intent(this, Activity_Saving.class);
             startActivity(intent);
         });
     

@@ -1,28 +1,50 @@
 package com.example.mepro;
 
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-import com.example.mepro.util.FragmentTest;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
+public class FragmentTest extends Fragment {
+    private boolean pieOrChart = true;
 
-public class TestView extends AppCompatActivity {
-    private BarData barData;
-    private BarDataSet barDataSet;
-    private Button nhan;
-    
+    public FragmentTest() {
+        // Constructor mặc định
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_saving);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate layout cho Fragment này
+        return inflater.inflate(R.layout.fragment_saving, container, false);
+    }
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer,
-                new FragmentTest()).commit();
-/*
-        PieChart pieChart = findViewById(R.id.piechartMoney);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        /*
+       ImageView imgPieOrBar = view.findViewById(R.id.imgPieOrBar);
+        PieChart pieChart = view.findViewById(R.id.piechartMoney);
+        BarChart bieudo = view.findViewById(R.id.barchartStatistical);
+        imgPieOrBar.setOnClickListener(view1 -> {
+            if(pieOrChart) {
+                imgPieOrBar.animate().rotationBy(360).setDuration(300).start();
+                pieChart.setVisibility(View.GONE);
+                bieudo.setVisibility(View.VISIBLE);
+                pieOrChart = false;
+            } else {
+                imgPieOrBar.animate().rotationBy(360).setDuration(300).start();
+                pieChart.setVisibility(View.VISIBLE);
+                bieudo.setVisibility(View.GONE);
+                pieOrChart = true;
+            }
+        });
+
         ArrayList<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(18.5f, "Ăn uống"));
         entries.add(new PieEntry(26.7f, "Tiền nhà"));
@@ -36,19 +58,10 @@ public class TestView extends AppCompatActivity {
         pieChart.animateY(1000, Easing.EaseInOutCubic);
         pieChart.invalidate();
 
-
- */
-
-
-
-
-    /*
-        nhan = findViewById(R.id.nhan);
-        BarChart bieudo = findViewById(R.id.bieudo);
         // Tìm kiếm biểu đồ thanh trong layout
-    
+
         ArrayList<BarEntry> visitors = new ArrayList<>();
-    
+
 
 // Thêm dữ liệu vào danh sách
         visitors.add(new BarEntry(1, 420));
@@ -67,7 +80,7 @@ public class TestView extends AppCompatActivity {
 
 
 // Tạo bộ dữ liệu
-        barDataSet = new BarDataSet(visitors, "Tiền");
+        BarDataSet barDataSet = new BarDataSet(visitors, "Tiền");
 
 
 // Tùy chỉnh bộ dữ liệu
@@ -76,7 +89,7 @@ public class TestView extends AppCompatActivity {
         barDataSet.setValueTextSize(10f);
 
 // Tạo dữ liệu cho biểu đồ
-        barData = new BarData(barDataSet);
+        BarData barData = new BarData(barDataSet);
 
 // Hiển thị biểu đồ
         bieudo.setData(barData);
@@ -84,14 +97,11 @@ public class TestView extends AppCompatActivity {
 // Tùy chỉnh biểu đồ
         bieudo.setFitBars(true);
         bieudo.getDescription().setText("Biểu đồ tiền");
-        
-        
+
+
         bieudo.animateX(1000);
         bieudo.animateY(1500);
 
-     */
-    
+         */
     }
-
 }
-

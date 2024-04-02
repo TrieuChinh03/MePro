@@ -46,6 +46,6 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.6'
 
     //===   Thư viện trượt biểu đồ    ===
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }

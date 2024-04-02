@@ -51,7 +51,7 @@ public class AdapterCategoryManager extends RecyclerView.Adapter<AdapterCategory
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     PopupMenu popupMenu = new PopupMenu(itemView.getContext(), itemView);
-                    popupMenu.inflate(R.menu.menu_work_category_manager);
+                    popupMenu.inflate(R.menu.menu_layout_work_category_manager);
                     CategoryDB categoryDB = new CategoryDB(itemView.getContext());
                     WorkDB workDB = new WorkDB(itemView.getContext());
                     popupMenu.setOnMenuItemClickListener(item -> {

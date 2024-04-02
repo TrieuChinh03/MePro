@@ -292,7 +292,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imgSpend"
+                        android:id="@+id/imgSaving"
                         android:layout_width="50dp"
                         android:layout_height="0dp"
                         android:layout_weight="2"
@@ -304,7 +304,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Chi tiêu"
+                        android:text="Số dư"
                         android:textColor="#00897B"
                         android:textStyle="bold" />
                 </LinearLayout>

@@ -18,8 +18,9 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_width="200dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
                 android:src="@drawable/sticker_congviec"/>
 
             <TextView
@@ -36,6 +37,7 @@
             android:id="@+id/rccvListWork"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:layout_margin="5dp"/>
     </FrameLayout>
 
@@ -51,7 +53,6 @@
                 android:id="@+id/workComplete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:orientation="horizontal">
 
                 <ImageView

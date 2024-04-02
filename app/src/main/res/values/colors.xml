@@ -3,6 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    //===   Mã màu back     ===
+    <color name="back">#00CC99</color>
+
+
+    //===   Mã màu work     ===
     <color name="buttonCategoryFalse">#B2DFDB</color>
     <color name="buttonCategoryTrue">#4DB6AC</color>
     <color name="backround_item_category_manager">#E0F2F1</color>
@@ -10,7 +15,11 @@
     <color name="background_listwork">#C8E6C9</color>
     <color name="background_work">#C8E6DF</color>
 
-    //===   Bảng mã màu     ===
+    //===   Mã màu saving account   ===
+    <color name="background_saving_account">#753D9F6A</color>
+
+
+    //===   Bảng mã màu dialog   ===
     <color name="colorRed">#FF0000</color>
     <color name="colorOrange">#FFA500</color>
     <color name="colorYellow">#FFFF00</color>

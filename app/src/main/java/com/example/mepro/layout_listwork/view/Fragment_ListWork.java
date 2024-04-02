@@ -185,6 +185,7 @@ public class Fragment_ListWork extends Fragment {
     //===   Lọc dữ liệu theo thời gian  ===
     public void filterData() {
         listWorkFilter = new ArrayList<>();
+        Calendar time = Calendar.getInstance();
         if(filer == 0) {
             for(int i=0 ;i<listWork.size(); i++) {
                 boolean isToday = DateUtils.isToday(Convert.getTime(listWork.get(i).getStartTime()).getTime());
