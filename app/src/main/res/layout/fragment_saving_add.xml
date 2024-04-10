@@ -14,9 +14,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="4dp"
             android:orientation="vertical">
 
             <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayoutSpentIncome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -34,12 +36,11 @@
             </com.google.android.material.tabs.TabLayout>
 
             <TextView
-                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:gravity="center"
-                android:text="Nhập khoản chi (VND)"
+                android:text="Nhập số tiền (VND)"
                 android:textSize="18sp"/>
 
             <LinearLayout
@@ -86,7 +87,7 @@
                 android:text="Nguồn thu - chi" />
 
             <EditText
-                android:id="@+id/editTextText4"
+                android:id="@+id/edtNameWork"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -101,13 +102,15 @@
                 android:text="Danh mục" />
 
             <GridView
-                android:id="@+id/gridView"
+                android:id="@+id/gridviewCategorys"
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
-                android:horizontalSpacing="12dp"
+                android:padding="8dp"
+                android:layout_marginTop="5dp"
+                android:horizontalSpacing="10dp"
                 android:numColumns="4"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="12dp" />
+                android:verticalSpacing="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -116,40 +119,45 @@
                 android:text="Thời gian" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/btToday"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:text="Hôm nay"
-                    android:textSize="20sp"/>
+                    android:layout_weight="1"
+                    android:text="Hôm nay"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/btYesterday"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="15dp"
-                    android:text="Hôm qua"
-                    android:textSize="20sp"/>
+                    android:text="Hôm qua"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/bt2DayBefore"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="15dp"
-                    android:text="Hôm kia"
-                    android:textSize="20sp"/>
+                    android:text="Hôm kia" />
 
                 <ImageView
+                    android:id="@+id/imgDate"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/ic_ngaythang"/>
             </LinearLayout>
 
 
             <Button
+                android:id="@+id/btAdd"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"

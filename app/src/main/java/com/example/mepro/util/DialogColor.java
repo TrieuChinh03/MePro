@@ -14,8 +14,6 @@ import java.util.List;
 
 public class DialogColor {
 
-    private int click;
-    private static int colorSelected;
     private Callback callback;
     private Context context;
     private List<Integer> listClick;

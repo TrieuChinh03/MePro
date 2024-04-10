@@ -8,12 +8,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mepro.R;
+import com.example.mepro.layout_saving.adapter.AdapterFluctuatingBalances;
 import com.example.mepro.layout_saving.database.CategoryDB;
+import com.example.mepro.layout_saving.database.FluctuatingBalancesHistoryDB;
 import com.example.mepro.layout_saving.model.Category;
 import com.example.mepro.layout_saving.model.FluctuatingBalancesHistory;
 import com.github.mikephil.charting.charts.PieChart;
@@ -36,8 +39,8 @@ public class Fragment_Saving_Report extends Fragment {
     private Calendar calendar = Calendar.getInstance();
     private Category category;
     private CategoryDB categoryDB;
+    private FluctuatingBalancesHistoryDB historyDB;
     private ArrayList<FluctuatingBalancesHistory> listFluctuatingBalances;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class Fragment_Saving_Report extends Fragment {
         viewSavingReport = view;
         mappingId();
         event();
+        setData();
 
     }
 
@@ -72,56 +76,71 @@ public class Fragment_Saving_Report extends Fragment {
     private void event() {
         //===   Sự kiện khi chọn tab thời gian  ===
         tablayoutTime.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-               @Override
-               public void onTabSelected(TabLayout.Tab tab) {
-                    time = tab.getPosition();
-                    calendar = Calendar.getInstance();
-                    setTime();
-               }
-
-               @Override
-               public void onTabUnselected(TabLayout.Tab tab) {
-
-               }
-
-               @Override
-               public void onTabReselected(TabLayout.Tab tab) {
-
-               }
-           });
-
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                time = tab.getPosition();
+                calendar = Calendar.getInstance();
+                setTime();
+            }
+    
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+        
+            }
+    
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+        
+            }
+        });
+    
         //===   Sự kiện khi chọn img thời gian trước ===
         imgbtBefore.setOnClickListener(view -> {
-            if(time == 0)
+            if (time == 0)
                 calendar.add(Calendar.DAY_OF_MONTH, -1);
 
-            else if(time == 1)
+            else if (time == 1)
                 calendar.add(Calendar.WEEK_OF_YEAR, -1);
 
-            else if(time == 2)
+            else if (time == 2)
                 calendar.add(Calendar.MONTH, -1);
 
-            else if(time == 3)
+            else if (time == 3)
                 calendar.add(Calendar.YEAR, -1);
-
+    
             setTime();
         });
-
+    
         //===   Sự kiện khi chọn img thời gian sau ===
         imgbtLater.setOnClickListener(view -> {
-            if(time == 0)
+            if (time == 0)
                 calendar.add(Calendar.DAY_OF_MONTH, +1);
 
-            else if(time == 1)
+            else if (time == 1)
                 calendar.add(Calendar.WEEK_OF_YEAR, +1);
 
-            else if(time == 2)
+            else if (time == 2)
                 calendar.add(Calendar.MONTH, +1);
 
-            else if(time == 3)
+            else if (time == 3)
                 calendar.add(Calendar.YEAR, +1);
-
+    
             setTime();
+        });
+    
+        //===   Sự kiện khi nhấn image  ===
+        imgPieOrBar.setOnClickListener(view ->{
+            categoryDB = new CategoryDB(viewSavingReport.getContext());
+            //categoryDB.insertData(new Category("Con cặc", 2, 2));
+            ArrayList<Category> categories = categoryDB.getData();
+            category = categories.get(2);
+            historyDB = new FluctuatingBalancesHistoryDB(viewSavingReport.getContext());
+            FluctuatingBalancesHistory history = new FluctuatingBalancesHistory(category.getId());
+            history.setFluctuatingBalances(20000);
+            history.setTime("12/2/2001");
+            history.setName("Mua con cặc");
+            historyDB.insertData(history);
+            Toast.makeText(viewSavingReport.getContext(), "Đã thêm", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -136,5 +155,47 @@ public class Fragment_Saving_Report extends Fragment {
         else if(time == 3)
             tvTime.setText("" + calendar.get(Calendar.YEAR));
     }
-
+    
+    //===   Set data các thay đổi số dư     ===
+    private void setData() {
+        historyDB = new FluctuatingBalancesHistoryDB(viewSavingReport.getContext());
+        listFluctuatingBalances = historyDB.getData(3,"2024-04");
+        
+        if (listFluctuatingBalances != null) {
+            ArrayList<Integer> idCategorys = new ArrayList<>();
+            ArrayList<FluctuatingBalancesHistory> histories = new ArrayList<>();
+            
+            int length = listFluctuatingBalances.size();
+            for (int i = 0; i < length; i++) {
+                int idCategory = listFluctuatingBalances.get(i).getIdCategory();
+                boolean idAlreadyExist = false;
+                for (Integer id : idCategorys) {
+                    if (id == idCategory) {
+                        idAlreadyExist = true;
+                        break;
+                    }
+                }
+                if (!idAlreadyExist)
+                    idCategorys.add(idCategory);
+            }
+    
+            for (int i = 0; i < idCategorys.size(); i++) {
+                int idCategory = idCategorys.get(i);
+                FluctuatingBalancesHistory history = new FluctuatingBalancesHistory(idCategory);
+                for(int j = 0; j < length; j++) {
+                    FluctuatingBalancesHistory history1 = listFluctuatingBalances.get(j);
+                    if(idCategory == history1.getIdCategory()) {
+                        history.setFluctuatingBalances(history.getFluctuatingBalances() + history1.getFluctuatingBalances());
+                    }
+                }
+                histories.add(history);
+            }
+            
+            
+            AdapterFluctuatingBalances adapter = new AdapterFluctuatingBalances(viewSavingReport.getContext(), R.layout.item_saving_history , histories);
+            lvListOfBalanceChanges.setAdapter(adapter);
+            
+        }
+        
+    }
 }

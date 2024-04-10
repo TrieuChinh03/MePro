@@ -24,7 +24,7 @@ import com.example.mepro.layout_listwork.model.Category;
 import com.example.mepro.layout_listwork.model.Work;
 import com.example.mepro.util.Convert;
 import com.example.mepro.util.DialogCalendar;
-import com.example.mepro.util.Dialog_ErrorMessage;
+import com.example.mepro.util.Dialog_Message;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ public class Activity_Work extends AppCompatActivity {
                 work = new Work();
                 String tilleWork = edtTilteWork.getText().toString().trim();
                 if(tilleWork.equals(""))
-                    Dialog_ErrorMessage.showDialogErrorMessage(this,R.drawable.sticker_error,"Lỗi rồi", "Bạn chưa nhập tên công việc");
+                    Dialog_Message.showDialogErrorMessage(this,R.drawable.sticker_error,"Lỗi rồi", "Bạn chưa nhập tên công việc");
                 else {
                     work.setTitleWork(tilleWork);
                     work.setExtraWork(list);
@@ -198,7 +198,7 @@ public class Activity_Work extends AppCompatActivity {
     //===   Lấy data danh mục   ===
     private void getDataCategory() {
         CategoryDB categoryDB = new CategoryDB(this);
-        listCategory = categoryDB.getListCategory(0);
+        listCategory = categoryDB.getData(-1);
         List<String> items = new ArrayList<>();
         for(int i=0; i<listCategory.size(); i++)
             items.add(listCategory.get(i).getNameCategory());

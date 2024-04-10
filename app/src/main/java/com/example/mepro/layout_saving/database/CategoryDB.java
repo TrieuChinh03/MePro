@@ -48,15 +48,23 @@ public class CategoryDB extends SQLiteOpenHelper {
         statement.bindLong(4, category.getId());
         statement.executeUpdateDelete();
     }
+    
+    public void deleteData(Category category) {
+        String query = "DELETE FROM tblCategory WHERE ID = ?";
+        SQLiteStatement statement = sql.compileStatement(query);
+        statement.bindLong(1, category.getId());
+        statement.executeUpdateDelete();
+    }
 
     public Category getCategory(int id) {
         String[] ids = {String.valueOf(id)};
         Cursor c = sql.rawQuery("SELECT * FROM tblCategory WHERE ID = ?" ,ids);
+        c.moveToFirst();
         Category category = new Category(c.getInt(0), c.getString(1), c.getInt(2), c.getInt(3));
         return category;
     }
 
-    public ArrayList<Category> getListCategory() {
+    public ArrayList<Category> getData() {
         Cursor c = sql.rawQuery("SELECT * FROM tblCategory" ,null);
         ArrayList<Category> listCategory = new ArrayList<>();
         if(c.moveToFirst()) {
@@ -67,7 +75,7 @@ public class CategoryDB extends SQLiteOpenHelper {
                 int type = c.getInt(3);
                 Category category = new Category(id, name, icon, type);
                 listCategory.add(category);
-            } while (c.moveToNext() && c.isAfterLast());
+            } while (c.moveToNext() && !c.isAfterLast());
             return listCategory;
         } else {
             return null;

@@ -55,6 +55,7 @@ public class AdapterNote extends ArrayAdapter<Note> {
         else
             tvContent.setText(note.getContent());
         tvTime.setText(Convert.getDateStr(note.getTime()));
+        
         imgDelete.setOnClickListener(view ->{
             if(note!=null && note.getId()!=null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);

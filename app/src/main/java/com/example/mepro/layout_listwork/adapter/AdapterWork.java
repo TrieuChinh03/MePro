@@ -48,7 +48,7 @@ public class AdapterWork extends RecyclerView.Adapter<AdapterWork.WorkViewHolder
         
         //===   Set cờ     ===
         CategoryDB categoryDB = new CategoryDB(context);
-        List<Category> categorys = categoryDB.getListCategory(work.getCategory());
+        List<Category> categorys = categoryDB.getData(work.getCategory());
         Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_flag);
         PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(categorys.get(0).getColor(), PorterDuff.Mode.SRC_IN);
         drawable.setColorFilter(colorFilter);

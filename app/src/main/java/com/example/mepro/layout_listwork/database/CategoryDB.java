@@ -64,9 +64,9 @@ public class CategoryDB extends SQLiteOpenHelper {
         sql.close();
     }
 
-    public ArrayList<Category> getListCategory(int idCategory) {
+    public ArrayList<Category> getData(int idCategory) {
         Cursor c;
-        if(idCategory == 0)
+        if(idCategory == -1)
             c = sql.rawQuery("SELECT * FROM tblCategoryDB" ,null);
         else {
             String[] ids = {String.valueOf(idCategory)};
@@ -83,10 +83,8 @@ public class CategoryDB extends SQLiteOpenHelper {
                 category = new Category(id,nameCategory,color);
                 listCategory.add(category);
             } while (c.moveToNext() && !c.isAfterLast());
-            sql.close();
             return listCategory;
         }
-        sql.close();
         return null;
     }}
 

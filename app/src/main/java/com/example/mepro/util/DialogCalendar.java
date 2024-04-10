@@ -71,14 +71,14 @@ public class DialogCalendar {
                             listener.onTimeSelected(creatTime(hour, min, day, month, year));
                             dialog.dismiss();
                         } else {
-                            Dialog_ErrorMessage.showDialogErrorMessage(context, R.drawable.sticker_error,"Lỗi rồi","Lỗi định dạng giờ, phút!");
+                            Dialog_Message.showDialogErrorMessage(context, R.drawable.sticker_error,"Lỗi rồi","Lỗi định dạng giờ, phút!");
                         }
                     } else {
-                        Dialog_ErrorMessage.showDialogErrorMessage(context, R.drawable.sticker_error,"Lỗi rồi","Lỗi định dạng ngày, tháng, năm!");
+                        Dialog_Message.showDialogErrorMessage(context, R.drawable.sticker_error,"Lỗi rồi","Lỗi định dạng ngày, tháng, năm!");
                     }
                     
                 } catch (Exception e) {
-                    Dialog_ErrorMessage.showDialogErrorMessage(context,R.drawable.sticker_error,"Lỗi rồi", "Không được nhập kí tự đặc biệt");
+                    Dialog_Message.showDialogErrorMessage(context,R.drawable.sticker_error,"Lỗi rồi", "Không được nhập kí tự đặc biệt");
                 }
             }
 

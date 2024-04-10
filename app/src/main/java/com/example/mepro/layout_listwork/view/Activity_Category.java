@@ -74,6 +74,6 @@ public class Activity_Category extends AppCompatActivity {
     //===   Lấy dữ liệu     ===
     private void getData() {
         categoryDB = new CategoryDB(this);
-        listCategory = categoryDB.getListCategory(0);
+        listCategory = categoryDB.getData(-1);
     }
 }

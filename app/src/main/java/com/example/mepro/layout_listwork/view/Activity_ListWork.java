@@ -115,7 +115,7 @@ public class Activity_ListWork extends AppCompatActivity {
         //===   Set dạng hiển thị ngang     ===
         rccvListCategory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         dbCategory = new CategoryDB(this);
-        listCategory = dbCategory.getListCategory(0);
+        listCategory = dbCategory.getData(-1);
         
         //===   Lấy  dữ liệu    ===
         if(listCategory == null || listCategory.size() == 0) {
